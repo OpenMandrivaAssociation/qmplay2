@@ -1,0 +1,33 @@
+--- src/gui/Unix/QMPlay2.desktop     2013-05-19 16:12:43.000000000 +0200
++++ new.src/gui/Unix/QMPlay2.desktop 2013-11-03 11:40:05.568001362 +0100
+@@ -1,8 +1,26 @@
+ [Desktop Entry]
++Categories=Qt;AudioVideo;Player;Video;
++Comment=A great ffmpeg front-end
++Comment[cs]=Výborný frontend pro ffmpeg
++Comment[es]=Un magnífico interfaz gráfico para el ffmpeg
++Comment[hu]=Egy nagyszerű grafikus ffmpeg felület
++Comment[it]=Un grande front-end per ffmpeg
++Comment[ja]=ffmpeg フロントエンド
++Comment[nl]=Een uitstekend frontend voor ffmpeg
++Comment[pl]=Świetna nakładka na Mplayer
++Comment[pt]=Um óptimo interface gráfico para o ffmpeg
++Comment[ru]=Мощный интерфейс к ffmpeg
++Comment[uk]=Потужний інтерфейс до ffmpeg
+ Exec=QMPlay2
++GenericName=Media Player
++GenericName[cs]=Přehrávač multimédií
++GenericName[es]=Reproductor multimedia
++GenericName[hu]=Médialejátszó
++GenericName[pt]=Reprodutor de Média
++GenericName[ru]=Медиаплеер
++GenericName[uk]=Програвач медіа
+ Icon=QMPlay2
++MimeType=audio/ac3;audio/mp4;audio/mpeg;audio/vnd.rn-realaudio;audio/vorbis;audio/x-adpcm;audio/x-matroska;audio/x-mp2;audio/x-mp3;audio/x-ms-wma;audio/x-vorbis;audio/x-wav;audio/mpegurl;audio/x-mpegurl;audio/x-pn-realaudio;audio/x-scpls;video/avi;video/mp4;video/flv;video/mpeg;video/quicktime;video/vnd.rn-realvideo;video/x-matroska;video/x-ms-asf;video/x-msvideo;video/x-ms-wmv;video/x-ogm;video/x-theora;video/x-flv;video/webm;audio/midi;audio/x-midi;audio/mid;x-content/video-dvd;
+ Name=QMPlay2
+-StartupNotify=false
+ Type=Application
+-Categories=Qt;AudioVideo;Player;Audio;Video;
+-MimeType=video/mp4;video/mpeg;video/ogg;video/quicktime;video/x-msvideo;video/x-flv;application/x-shockwave-flash;application/vnd.rn-realmedia;video/vnd.rn-realvideo;video/3gpp;video/3gpp2;video/dv;video;mp2t;video/webm;video/x-matroska;application/x-matroska;video/x-ms-asf;video/x-ms-wmv;video/x-ogm+ogg;video/x-theora+ogg;video/mp2t;audio/x-ape;audio/ac3;audio/mp4;audio/AMR;audio/aac;audio/flac;audio/webm;audio/x-matroska;audio/ac3;audio/flac;audio/mp2;audio/ogg;audio/x-flac+ogg;audio/x-aiff;audio/x-wav;audio/x-vorbis+ogg;audio/x-tta;audio/x-wavpack;audio/x-musepack;audio/x-ms-wma;audio/x-ms-asx;audio/x-mod;audio/x-s3m;audio/x-stm;audio/x-xi;audio/x-xm;audio/mpeg;audio/j2b;audio/umx;
++X-KDE-StartupNotify=false
+\ Manca newline alla fine del file

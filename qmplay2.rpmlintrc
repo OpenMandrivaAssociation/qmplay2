@@ -1,0 +1,4 @@
+# linting filter
+addFilter("E: executable-in-library-package")
+# enable debug but ...
+addFilter("E: debuginfo-without-sources")
