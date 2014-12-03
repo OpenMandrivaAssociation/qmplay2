@@ -2,3 +2,4 @@
 addFilter("E: executable-in-library-package")
 # enable debug but ...
 addFilter("E: debuginfo-without-sources")
+addFilter("E: library-not-linked-against-libc")
