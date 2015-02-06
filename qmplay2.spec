@@ -12,7 +12,7 @@
 ######
 %define name qmplay2
 %define oname QMPlay2
-%define release  1
+%define release  2
 %define version  14.12.01
 
 Summary:	Video player
