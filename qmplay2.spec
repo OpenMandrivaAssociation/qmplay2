@@ -34,7 +34,6 @@ BuildRequires:	cmake(Qt5Svg)
 BuildRequires:	cmake(Qt5DBus)
 BuildRequires:	cmake(Qt5Gui)
 BuildRequires:	cmake(Qt5X11Extras)
-BuildRequires:	cmake(KF5Solid)
 BuildRequires:	pkgconfig(alsa)
 BuildRequires:  pkgconfig(portaudio-2.0)
 BuildRequires:  pkgconfig(libpulse)
@@ -49,19 +48,13 @@ BuildRequires:  pkgconfig(libcddb)
 BuildRequires:  pkgconfig(taglib)
 BuildRequires:  desktop-file-utils
 BuildRequires:  imagemagick
+BuildRequires:	plasma-workspace
 Obsoletes:      qmplay2-12072013
 Obsoletes:      qmplay2-common-12072013
 
 # since now needs youtube-dl.Sflo
 Requires:       youtube-dl
 Requires:       %{libname} = %{EVRD}
-
-# kde is Rosa's default DE no need to 
-# split kde-integration package
-# kdebase4 suggested to allow it on gnome and lxde
-# without DE integration
-Suggests:	kdebase4-workspace
-
 
 %description
 QMPlay2 is a video player, it can plays all formats 
