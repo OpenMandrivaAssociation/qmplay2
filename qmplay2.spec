@@ -106,7 +106,7 @@ Development libs for %{oname}.
 
 %prep
 %setup -qn %{oname}-%{version}
-%apply_patches
+%autopatch -p1
 
 %build
 export CC=gcc
