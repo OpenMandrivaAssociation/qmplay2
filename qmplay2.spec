@@ -1,34 +1,23 @@
-%define _disable_lto 1
-
-######################################################
-# SpecFile: qmplay2.spec 
-# Generato: http://www.mandrivausers.ro/
-# MRB: Falticska Florin
-######################################################
-# empty debug
 %define debug_package	%{nil}
 %define major 1
 %define libname %mklibname %{name}_ %{major}
 %define lib_name_devel  %mklibname %{name} -d
 
-######
-%define name qmplay2
 %define oname QMPlay2
-%define release  2
-%define version  18.07.03
 
 Summary:	Video player
-Name:		%{name}
-Version:	%{version}
-Release:	%{release}
+Name:		qmplay2
+Version:	19.12.19
+Release:	1
 Source0:	https://github.com/zaps166/QMPlay2/archive/%{oname}-%{version}.tar.gz
 Source100:	%{name}.rpmlintrc
-
+Patch0:   qmplay-19.12.19-fix-missing-include-in-qt-5.15-openmandriva.patch
 URL:		http://zaps166.sourceforge.net/?app=QMPlay2
 License:	LGPLv3
 Group:		Video
 
 BuildRequires:	cmake(ECM)
+BuildRequires:  cmake(Qt5Qml)
 BuildRequires:	cmake(Qt5Widgets)
 BuildRequires:	cmake(Qt5Svg)
 BuildRequires:	cmake(Qt5DBus)
@@ -37,7 +26,16 @@ BuildRequires:	cmake(Qt5X11Extras)
 BuildRequires:	pkgconfig(alsa)
 BuildRequires:  pkgconfig(portaudio-2.0)
 BuildRequires:  pkgconfig(libpulse)
+BuildRequires:  pkgconfig(libpulse-simple)
+BuildRequires:  pkgconfig(libsidplayfp)
+BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libswresample)
+BuildRequires:  pkgconfig(libavformat)
+BuildRequires:  pkgconfig(libavcodec)
+BuildRequires:  pkgconfig(libswscale)
+BuildRequires:  pkgconfig(libavutil)
+BuildRequires:  pkgconfig(libavdevice)
+BuildRequires:  pkgconfig(libgme)
 BuildRequires:  pkgconfig(libva)
 BuildRequires:  pkgconfig(libcdio)
 BuildRequires:  pkgconfig(libass)
@@ -46,6 +44,7 @@ BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(vdpau)
 BuildRequires:  pkgconfig(libcddb)
 BuildRequires:  pkgconfig(taglib)
+BuildRequires:  sidplay-devel
 BuildRequires:  desktop-file-utils
 BuildRequires:  imagemagick
 BuildRequires:	plasma-workspace
@@ -62,7 +61,7 @@ and stream supported by ffmpeg and libmodplug
 (including J2B). It has integrated Youtube and Wrzuta browser.
 
 %files  
-%doc TODO ChangeLog
+%doc ChangeLog
 %{_bindir}/%{oname}
 %{_iconsdir}/hicolor/*/apps/%{oname}.*
 %{_mandir}/man1/%{oname}.1*
@@ -83,7 +82,7 @@ Group:		System/Libraries
 qmplay2 dynamic libraries.
 
 %files -n %{libname}
-%doc TODO ChangeLog
+%doc ChangeLog
 %{_libdir}/libqmplay2.so
 %{_libdir}/%{name}/modules/*.so
 
@@ -99,7 +98,7 @@ Requires:	%{libname} = %{EVRD}
 Development libs for %{oname}.
 
 %files -n    	%{lib_name_devel}
-%doc TODO ChangeLog
+%doc ChangeLog
 %{_includedir}/%{oname}
 ############################
 
@@ -109,8 +108,6 @@ Development libs for %{oname}.
 %autopatch -p1
 
 %build
-export CC=gcc
-export CXX=g++
 %cmake
 %make_build
 
