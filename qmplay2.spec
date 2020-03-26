@@ -52,7 +52,7 @@ and stream supported by ffmpeg and libmodplug
 (including J2B). It has integrated Youtube and Wrzuta browser.
 
 %files  
-%doc TODO ChangeLog
+%doc ChangeLog
 %{_bindir}/%{oname}
 %{_iconsdir}/hicolor/*/apps/%{oname}.*
 %{_mandir}/man1/%{oname}.1*
@@ -99,8 +99,8 @@ Development libs for %{oname}.
 %autopatch -p1
 
 %build
-export CC=gcc
-export CXX=g++
+#export CC=gcc
+#export CXX=g++
 %cmake
 %make_build
 
