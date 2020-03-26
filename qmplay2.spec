@@ -1,26 +1,16 @@
 %define _disable_lto 1
 
-######################################################
-# SpecFile: qmplay2.spec 
-# Generato: http://www.mandrivausers.ro/
-# MRB: Falticska Florin
-######################################################
-# empty debug
 %define debug_package	%{nil}
 %define major 1
 %define libname %mklibname %{name}_ %{major}
 %define lib_name_devel  %mklibname %{name} -d
 
-######
-%define name qmplay2
 %define oname QMPlay2
-%define release  2
-%define version  18.07.03
 
 Summary:	Video player
-Name:		%{name}
-Version:	%{version}
-Release:	%{release}
+Name:		qmplay2
+Version:	19.12.19
+Release:	1
 Source0:	https://github.com/zaps166/QMPlay2/archive/%{oname}-%{version}.tar.gz
 Source100:	%{name}.rpmlintrc
 
