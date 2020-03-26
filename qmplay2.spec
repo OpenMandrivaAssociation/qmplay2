@@ -13,7 +13,7 @@ Version:	19.12.19
 Release:	1
 Source0:	https://github.com/zaps166/QMPlay2/archive/%{oname}-%{version}.tar.gz
 Source100:	%{name}.rpmlintrc
-
+Patch0:   qmplay-19.12.19-fix-missing-include-in-qt-5.15-openmandriva.patch
 URL:		http://zaps166.sourceforge.net/?app=QMPlay2
 License:	LGPLv3
 Group:		Video
