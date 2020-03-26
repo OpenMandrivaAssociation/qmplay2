@@ -73,7 +73,7 @@ Group:		System/Libraries
 qmplay2 dynamic libraries.
 
 %files -n %{libname}
-%doc TODO ChangeLog
+%doc ChangeLog
 %{_libdir}/libqmplay2.so
 %{_libdir}/%{name}/modules/*.so
 
@@ -89,7 +89,7 @@ Requires:	%{libname} = %{EVRD}
 Development libs for %{oname}.
 
 %files -n    	%{lib_name_devel}
-%doc TODO ChangeLog
+%doc ChangeLog
 %{_includedir}/%{oname}
 ############################
 
