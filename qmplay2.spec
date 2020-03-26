@@ -1,5 +1,3 @@
-%define _disable_lto 1
-
 %define debug_package	%{nil}
 %define major 1
 %define libname %mklibname %{name}_ %{major}
@@ -19,6 +17,7 @@ License:	LGPLv3
 Group:		Video
 
 BuildRequires:	cmake(ECM)
+BuildRequires:  cmake(Qt5Qml)
 BuildRequires:	cmake(Qt5Widgets)
 BuildRequires:	cmake(Qt5Svg)
 BuildRequires:	cmake(Qt5DBus)
@@ -27,7 +26,16 @@ BuildRequires:	cmake(Qt5X11Extras)
 BuildRequires:	pkgconfig(alsa)
 BuildRequires:  pkgconfig(portaudio-2.0)
 BuildRequires:  pkgconfig(libpulse)
+BuildRequires:  pkgconfig(libpulse-simple)
+BuildRequires:  pkgconfig(libsidplayfp)
+BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libswresample)
+BuildRequires:  pkgconfig(libavformat)
+BuildRequires:  pkgconfig(libavcodec)
+BuildRequires:  pkgconfig(libswscale)
+BuildRequires:  pkgconfig(libavutil)
+BuildRequires:  pkgconfig(libavdevice)
+BuildRequires:  pkgconfig(libgme)
 BuildRequires:  pkgconfig(libva)
 BuildRequires:  pkgconfig(libcdio)
 BuildRequires:  pkgconfig(libass)
@@ -36,6 +44,7 @@ BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(vdpau)
 BuildRequires:  pkgconfig(libcddb)
 BuildRequires:  pkgconfig(taglib)
+BuildRequires:  sidplay-devel
 BuildRequires:  desktop-file-utils
 BuildRequires:  imagemagick
 BuildRequires:	plasma-workspace
@@ -99,8 +108,6 @@ Development libs for %{oname}.
 %autopatch -p1
 
 %build
-#export CC=gcc
-#export CXX=g++
 %cmake
 %make_build
 
