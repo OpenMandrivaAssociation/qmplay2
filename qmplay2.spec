@@ -44,6 +44,7 @@ BuildRequires:  pkgconfig(libass)
 BuildRequires:  pkgconfig(xv)
 BuildRequires:  pkgconfig(gl) 
 BuildRequires:  pkgconfig(vdpau)
+BuildRequires:  pkgconfig(vulkan)
 BuildRequires:  pkgconfig(libcddb)
 BuildRequires:  pkgconfig(taglib)
 BuildRequires:  sidplay-devel
