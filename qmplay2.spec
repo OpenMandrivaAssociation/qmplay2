@@ -9,7 +9,7 @@ Summary:	Video player
 Name:		qmplay2
 Version:	20.05.02
 Release:	1
-Source0:	https://github.com/zaps166/QMPlay2/archive/%{oname}-%{version}.tar.gz
+Source0:	https://github.com/zaps166/QMPlay2/releases/download/%{oname}-src-%{version}.tar.xz
 Source100:	%{name}.rpmlintrc
 URL:		http://zaps166.sourceforge.net/?app=QMPlay2
 License:	LGPLv3
@@ -103,7 +103,7 @@ Development libs for %{oname}.
 
 
 %prep
-%setup -qn %{oname}-%{version}
+%setup -qn %{oname}-src-%{version}
 %autopatch -p1
 
 %build
