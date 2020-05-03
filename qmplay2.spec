@@ -113,7 +113,10 @@ Development libs for %{oname}.
 %autopatch -p1
 
 %build
-%cmake  -DUSE_PULSEAUDIO=ON
+%cmake  \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DUSE_PULSEAUDIO=ON
+
 %make_build
 
 %install
