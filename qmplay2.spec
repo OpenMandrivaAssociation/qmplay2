@@ -1,4 +1,4 @@
-%define _disable_lto 1
+#define _disable_lto 1
 %define _disable_ld_no_undefined 1
 
 %define debug_package	%{nil}
@@ -113,7 +113,7 @@ Development libs for %{oname}.
 %autopatch -p1
 
 %build
-%cmake
+%cmake  -DUSE_PULSEAUDIO=ON
 %make_build
 
 %install
