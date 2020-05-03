@@ -19,6 +19,7 @@ URL:		http://zaps166.sourceforge.net/?app=QMPlay2
 License:	LGPLv3
 Group:		Video
 
+BuildRequires:  ninja
 BuildRequires:	cmake(ECM)
 BuildRequires:  cmake(Qt5Concurrent)
 BuildRequires:  cmake(Qt5Qml)
@@ -114,11 +115,12 @@ Development libs for %{oname}.
 
 %build
 %cmake  \
+        -G Ninja \
         -DCMAKE_BUILD_TYPE=Release \
         -DUSE_PULSEAUDIO=ON \
         -DUSE_LINK_TIME_OPTIMIZATION=ON
 
-%make_build
+%ninja_build -C build
 
 %install
-%make_install -C build
+%ninja_install -C build
