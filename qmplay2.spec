@@ -113,13 +113,12 @@ Development libs for %{oname}.
 %setup -qn %{oname}-src-%{version}
 %autopatch -p1
 
-%build
 %cmake  \
         -G Ninja \
         -DCMAKE_BUILD_TYPE=Release \
         -DUSE_PULSEAUDIO=ON \
         -DUSE_LINK_TIME_OPTIMIZATION=ON
-
+%build
 %ninja_build -C build
 
 %install
