@@ -115,7 +115,8 @@ Development libs for %{oname}.
 %build
 %cmake  \
         -DCMAKE_BUILD_TYPE=Release \
-        -DUSE_PULSEAUDIO=ON
+        -DUSE_PULSEAUDIO=ON \
+        -DUSE_LINK_TIME_OPTIMIZATION
 
 %make_build
 
