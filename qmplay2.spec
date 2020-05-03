@@ -1,3 +1,6 @@
+#define _disable_lto 1
+%define _disable_ld_no_undefined 1
+
 %define debug_package	%{nil}
 %define major 1
 %define libname %mklibname %{name}_ %{major}
@@ -7,16 +10,18 @@
 
 Summary:	Video player
 Name:		qmplay2
-Version:	19.12.19
+Version:	20.05.02
 Release:	1
-Source0:	https://github.com/zaps166/QMPlay2/archive/%{oname}-%{version}.tar.gz
+Source0:	https://github.com/zaps166/QMPlay2/releases/download/%{oname}-src-%{version}.tar.xz
 Source100:	%{name}.rpmlintrc
-Patch0:   qmplay-19.12.19-fix-missing-include-in-qt-5.15-openmandriva.patch
+Patch0:   https://github.com/zaps166/QMPlay2/commit/996294c9723e9e287bea33918acbf67334c0a3b5.patch
 URL:		http://zaps166.sourceforge.net/?app=QMPlay2
 License:	LGPLv3
 Group:		Video
 
+BuildRequires:  ninja
 BuildRequires:	cmake(ECM)
+BuildRequires:  cmake(Qt5Concurrent)
 BuildRequires:  cmake(Qt5Qml)
 BuildRequires:	cmake(Qt5Widgets)
 BuildRequires:	cmake(Qt5Svg)
@@ -42,6 +47,7 @@ BuildRequires:  pkgconfig(libass)
 BuildRequires:  pkgconfig(xv)
 BuildRequires:  pkgconfig(gl) 
 BuildRequires:  pkgconfig(vdpau)
+BuildRequires:  pkgconfig(vulkan)
 BuildRequires:  pkgconfig(libcddb)
 BuildRequires:  pkgconfig(taglib)
 BuildRequires:  sidplay-devel
@@ -104,12 +110,16 @@ Development libs for %{oname}.
 
 
 %prep
-%setup -qn %{oname}-%{version}
+%setup -qn %{oname}-src-%{version}
 %autopatch -p1
 
+%cmake  \
+        -G Ninja \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DUSE_PULSEAUDIO=ON \
+        -DUSE_LINK_TIME_OPTIMIZATION=ON
 %build
-%cmake
-%make_build
+%ninja_build -C build
 
 %install
-%make_install -C build
+%ninja_install -C build
