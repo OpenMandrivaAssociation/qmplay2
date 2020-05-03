@@ -20,6 +20,7 @@ License:	LGPLv3
 Group:		Video
 
 BuildRequires:	cmake(ECM)
+BuildRequires:  cmake(Qt5Concurrent)
 BuildRequires:  cmake(Qt5Qml)
 BuildRequires:	cmake(Qt5Widgets)
 BuildRequires:	cmake(Qt5Svg)
