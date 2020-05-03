@@ -11,6 +11,7 @@ Version:	20.05.02
 Release:	1
 Source0:	https://github.com/zaps166/QMPlay2/releases/download/%{oname}-src-%{version}.tar.xz
 Source100:	%{name}.rpmlintrc
+Patch0:   https://github.com/zaps166/QMPlay2/commit/996294c9723e9e287bea33918acbf67334c0a3b5.patch
 URL:		http://zaps166.sourceforge.net/?app=QMPlay2
 License:	LGPLv3
 Group:		Video
