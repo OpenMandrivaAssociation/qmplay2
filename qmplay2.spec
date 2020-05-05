@@ -1,7 +1,7 @@
 #define _disable_lto 1
 %define _disable_ld_no_undefined 1
 
-%define debug_package	%{nil}
+#define debug_package	%{nil}
 %define major 1
 %define libname %mklibname %{name}_ %{major}
 %define lib_name_devel  %mklibname %{name} -d
