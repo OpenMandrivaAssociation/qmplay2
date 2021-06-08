@@ -53,7 +53,6 @@ BuildRequires:  pkgconfig(vulkan)
 BuildRequires:  pkgconfig(libcddb)
 BuildRequires:  pkgconfig(taglib)
 BuildRequires:  sidplay-devel
-BuildRequires:  portaudio0-devel
 BuildRequires:  desktop-file-utils
 BuildRequires:  imagemagick
 BuildRequires:	plasma-workspace
