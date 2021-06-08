@@ -1,7 +1,7 @@
 #define _disable_lto 1
 %define _disable_ld_no_undefined 1
 
-%define debug_package	%{nil}
+#define debug_package	%{nil}
 %define major 1
 %define libname %mklibname %{name}_ %{major}
 %define lib_name_devel  %mklibname %{name} -d
@@ -10,7 +10,7 @@
 
 Summary:	Video player
 Name:		qmplay2
-Version:	21.03.09
+Version:	21.06.07
 Release:	1
 Source0:	https://github.com/zaps166/QMPlay2/releases/download/%{oname}-src-%{version}.tar.xz
 Source100:	%{name}.rpmlintrc
