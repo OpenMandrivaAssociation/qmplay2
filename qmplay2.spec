@@ -34,6 +34,7 @@ BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libpulse-simple)
 BuildRequires:  pkgconfig(libsidplayfp)
 BuildRequires:  pkgconfig(libpulse)
+BuildRequires:  pkgconfig(libpipewire-0.3)
 BuildRequires:  pkgconfig(libswresample)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavcodec)
@@ -44,6 +45,7 @@ BuildRequires:  pkgconfig(libgme)
 BuildRequires:  pkgconfig(libva)
 BuildRequires:  pkgconfig(libcdio)
 BuildRequires:  pkgconfig(libass)
+BuildRequires:  pkgconfig(shaderc)
 BuildRequires:  pkgconfig(xv)
 BuildRequires:  pkgconfig(gl) 
 BuildRequires:  pkgconfig(vdpau)
@@ -51,9 +53,11 @@ BuildRequires:  pkgconfig(vulkan)
 BuildRequires:  pkgconfig(libcddb)
 BuildRequires:  pkgconfig(taglib)
 BuildRequires:  sidplay-devel
+BuildRequires:  portaudio0-devel
 BuildRequires:  desktop-file-utils
 BuildRequires:  imagemagick
 BuildRequires:	plasma-workspace
+BuildRequires:  glslc
 Obsoletes:      qmplay2-12072013
 Obsoletes:      qmplay2-common-12072013
 
