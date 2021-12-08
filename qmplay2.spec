@@ -10,7 +10,7 @@
 
 Summary:	Video player
 Name:		qmplay2
-Version:	21.06.07
+Version:	21.12.07
 Release:	1
 Source0:	https://github.com/zaps166/QMPlay2/releases/download/%{oname}-src-%{version}.tar.xz
 Source100:	%{name}.rpmlintrc
@@ -61,7 +61,7 @@ Obsoletes:      qmplay2-12072013
 Obsoletes:      qmplay2-common-12072013
 
 # since now needs youtube-dl.Sflo
-Requires:       youtube-dl
+Requires:       yt-dlp
 Requires:       %{libname} = %{EVRD}
 
 %description
