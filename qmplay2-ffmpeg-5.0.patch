@@ -1,0 +1,125 @@
+diff -up QMPlay2-src-21.12.24/src/modules/CUVID/CuvidDec.cpp.omv~ QMPlay2-src-21.12.24/src/modules/CUVID/CuvidDec.cpp
+--- QMPlay2-src-21.12.24/src/modules/CUVID/CuvidDec.cpp.omv~	2022-01-18 04:49:54.917872857 +0100
++++ QMPlay2-src-21.12.24/src/modules/CUVID/CuvidDec.cpp	2022-01-18 04:49:58.250891698 +0100
+@@ -431,7 +431,7 @@ bool CuvidDec::open(StreamInfo &streamIn
+     if (streamInfo.codec_type != AVMEDIA_TYPE_VIDEO)
+         return false;
+ 
+-    AVCodec *avCodec = avcodec_find_decoder_by_name(streamInfo.codec_name);
++    const AVCodec *avCodec = avcodec_find_decoder_by_name(streamInfo.codec_name);
+     if (!avCodec)
+         return false;
+ 
+diff -up QMPlay2-src-21.12.24/src/modules/CUVID/CuvidDec.hpp.omv~ QMPlay2-src-21.12.24/src/modules/CUVID/CuvidDec.hpp
+--- QMPlay2-src-21.12.24/src/modules/CUVID/CuvidDec.hpp.omv~	2022-01-18 04:49:20.395675693 +0100
++++ QMPlay2-src-21.12.24/src/modules/CUVID/CuvidDec.hpp	2022-01-18 04:49:36.509768188 +0100
+@@ -26,6 +26,10 @@
+ #include <QCoreApplication>
+ #include <QQueue>
+ 
++extern "C" {
++#include <libavcodec/bsf.h>
++}
++
+ class CuvidHWInterop;
+ class VideoWriter;
+ 
+diff -up QMPlay2-src-21.12.24/src/modules/FFmpeg/FFDec.cpp.omv~ QMPlay2-src-21.12.24/src/modules/FFmpeg/FFDec.cpp
+--- QMPlay2-src-21.12.24/src/modules/FFmpeg/FFDec.cpp.omv~	2022-01-18 04:45:28.038233822 +0100
++++ QMPlay2-src-21.12.24/src/modules/FFmpeg/FFDec.cpp	2022-01-18 04:48:47.395483621 +0100
+@@ -68,9 +68,9 @@ void FFDec::clearFrames()
+ }
+ 
+ 
+-AVCodec *FFDec::init(StreamInfo &streamInfo)
++const AVCodec *FFDec::init(StreamInfo &streamInfo)
+ {
+-    AVCodec *codec = avcodec_find_decoder_by_name(streamInfo.codec_name);
++    const AVCodec *codec = avcodec_find_decoder_by_name(streamInfo.codec_name);
+     if (codec)
+     {
+         codec_ctx = avcodec_alloc_context3(codec);
+@@ -79,7 +79,7 @@ AVCodec *FFDec::init(StreamInfo &streamI
+     }
+     return codec;
+ }
+-bool FFDec::openCodec(AVCodec *codec)
++bool FFDec::openCodec(const AVCodec *codec)
+ {
+     if (avcodec_open2(codec_ctx, codec, nullptr))
+         return false;
+diff -up QMPlay2-src-21.12.24/src/modules/FFmpeg/FFDec.hpp.omv~ QMPlay2-src-21.12.24/src/modules/FFmpeg/FFDec.hpp
+--- QMPlay2-src-21.12.24/src/modules/FFmpeg/FFDec.hpp.omv~	2022-01-18 04:47:06.443871639 +0100
++++ QMPlay2-src-21.12.24/src/modules/FFmpeg/FFDec.hpp	2022-01-18 04:48:41.276447601 +0100
+@@ -48,8 +48,8 @@ protected:
+ 
+     void clearFrames();
+ 
+-    AVCodec *init(StreamInfo &streamInfo);
+-    bool openCodec(AVCodec *codec);
++    const AVCodec *init(StreamInfo &streamInfo);
++    bool openCodec(const AVCodec *codec);
+ 
+     void decodeFirstStep(const Packet &encodedPacket, bool flush);
+     int decodeStep(bool &frameFinished);
+diff -up QMPlay2-src-21.12.24/src/modules/FFmpeg/FFDecSW.cpp.omv~ QMPlay2-src-21.12.24/src/modules/FFmpeg/FFDecSW.cpp
+--- QMPlay2-src-21.12.24/src/modules/FFmpeg/FFDecSW.cpp.omv~	2022-01-18 04:47:42.607095370 +0100
++++ QMPlay2-src-21.12.24/src/modules/FFmpeg/FFDecSW.cpp	2022-01-18 04:47:45.906115520 +0100
+@@ -393,7 +393,7 @@ bool FFDecSW::decodeSubtitle(const QVect
+ 
+ bool FFDecSW::open(StreamInfo &streamInfo)
+ {
+-    AVCodec *codec = FFDec::init(streamInfo);
++    const AVCodec *codec = FFDec::init(streamInfo);
+     if (!codec)
+         return false;
+     if (codec_ctx->codec_type == AVMEDIA_TYPE_VIDEO)
+diff -up QMPlay2-src-21.12.24/src/modules/FFmpeg/FFDecVAAPI.cpp.omv~ QMPlay2-src-21.12.24/src/modules/FFmpeg/FFDecVAAPI.cpp
+--- QMPlay2-src-21.12.24/src/modules/FFmpeg/FFDecVAAPI.cpp.omv~	2022-01-18 04:48:03.983225187 +0100
++++ QMPlay2-src-21.12.24/src/modules/FFmpeg/FFDecVAAPI.cpp	2022-01-18 04:48:06.382239647 +0100
+@@ -186,7 +186,7 @@ bool FFDecVAAPI::open(StreamInfo &stream
+         return false;
+     }
+ 
+-    AVCodec *codec = init(streamInfo);
++    const AVCodec *codec = init(streamInfo);
+     if (!codec || !hasHWAccel("vaapi"))
+         return false;
+ 
+diff -up QMPlay2-src-21.12.24/src/modules/FFmpeg/FFDecVDPAU.cpp.omv~ QMPlay2-src-21.12.24/src/modules/FFmpeg/FFDecVDPAU.cpp
+--- QMPlay2-src-21.12.24/src/modules/FFmpeg/FFDecVDPAU.cpp.omv~	2022-01-18 04:47:22.864973890 +0100
++++ QMPlay2-src-21.12.24/src/modules/FFmpeg/FFDecVDPAU.cpp	2022-01-18 04:47:25.565990602 +0100
+@@ -144,7 +144,7 @@ bool FFDecVDPAU::open(StreamInfo &stream
+     if (pix_fmt != AV_PIX_FMT_YUV420P && pix_fmt != AV_PIX_FMT_YUVJ420P)
+         return false;
+ 
+-    AVCodec *codec = init(streamInfo);
++    const AVCodec *codec = init(streamInfo);
+     if (!codec || !hasHWAccel("vdpau"))
+         return false;
+ 
+diff -up QMPlay2-src-21.12.24/src/modules/FFmpeg/FormatContext.cpp.omv~ QMPlay2-src-21.12.24/src/modules/FFmpeg/FormatContext.cpp
+--- QMPlay2-src-21.12.24/src/modules/FFmpeg/FormatContext.cpp.omv~	2022-01-18 04:45:07.529094981 +0100
++++ QMPlay2-src-21.12.24/src/modules/FFmpeg/FormatContext.cpp	2022-01-18 04:46:42.240718856 +0100
+@@ -168,10 +168,10 @@ private:
+ class OpenFmtCtxThr : public OpenThr
+ {
+     AVFormatContext *m_formatCtx;
+-    AVInputFormat *m_inputFmt;
++    const AVInputFormat *m_inputFmt;
+ 
+ public:
+-    inline OpenFmtCtxThr(AVFormatContext *formatCtx, const QByteArray &url, AVInputFormat *inputFmt, AVDictionary *options, std::shared_ptr<AbortContext> &abortCtx) :
++    inline OpenFmtCtxThr(AVFormatContext *formatCtx, const QByteArray &url, const AVInputFormat *inputFmt, AVDictionary *options, std::shared_ptr<AbortContext> &abortCtx) :
+         OpenThr(url, options, abortCtx),
+         m_formatCtx(formatCtx),
+         m_inputFmt(inputFmt)
+@@ -679,7 +679,7 @@ bool FormatContext::open(const QString &
+             return false;
+     }
+ 
+-    AVInputFormat *inputFmt = nullptr;
++    const AVInputFormat *inputFmt = nullptr;
+     if (scheme == "file")
+         isLocal = true;
+     else

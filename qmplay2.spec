@@ -11,9 +11,10 @@
 Summary:	Video player
 Name:		qmplay2
 Version:	21.12.24
-Release:	1
+Release:	2
 Source0:	https://github.com/zaps166/QMPlay2/releases/download/%{oname}-src-%{version}.tar.xz
 Source100:	%{name}.rpmlintrc
+Patch0:		qmplay2-ffmpeg-5.0.patch
 
 URL:		http://zaps166.sourceforge.net/?app=QMPlay2
 License:	LGPLv3
@@ -113,14 +114,13 @@ Development libs for %{oname}.
 
 
 %prep
-%setup -qn %{oname}-src-%{version}
-%autopatch -p1
-
+%autosetup -p1 -n %{oname}-src-%{version}
 %cmake  \
         -G Ninja \
         -DCMAKE_BUILD_TYPE=Release \
         -DUSE_PULSEAUDIO=ON \
         -DUSE_LINK_TIME_OPTIMIZATION=ON
+
 %build
 %ninja_build -C build
 
