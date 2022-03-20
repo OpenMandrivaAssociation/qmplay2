@@ -14,7 +14,6 @@ Version:	22.03.12
 Release:	1
 Source0:	https://github.com/zaps166/QMPlay2/releases/download/%{oname}-src-%{version}.tar.xz
 Source100:	%{name}.rpmlintrc
-Patch0:		qmplay2-ffmpeg-5.0.patch
 
 URL:		http://zaps166.sourceforge.net/?app=QMPlay2
 License:	LGPLv3
