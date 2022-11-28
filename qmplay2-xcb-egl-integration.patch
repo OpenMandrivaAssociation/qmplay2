@@ -1,0 +1,11 @@
+diff -up QMPlay2-src-22.10.23/src/gui/Main.cpp.omv~ QMPlay2-src-22.10.23/src/gui/Main.cpp
+--- QMPlay2-src-22.10.23/src/gui/Main.cpp.omv~	2022-11-28 16:41:14.869188866 +0100
++++ QMPlay2-src-22.10.23/src/gui/Main.cpp	2022-11-28 16:42:30.487637591 +0100
+@@ -610,6 +610,7 @@ int main(int argc, char *argv[])
+     atexit(exitProcedure);
+ 
+     qputenv("QT_QPA_UPDATE_IDLE_TIME", "0");
++    qputenv("QT_XCB_GL_INTEGRATION", "xcb_egl"); // Needs to be done before the QApplication constructor loads the plugins, needed for VA-API to work
+ 
+ #ifdef Q_OS_HAIKU
+     setenv("HOME", "/boot/home", 1);
