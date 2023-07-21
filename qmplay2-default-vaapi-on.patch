@@ -1,0 +1,12 @@
+diff -up QMPlay2-src-23.06.17/src/qmplay2/QMPlay2Core.cpp.omv~ QMPlay2-src-23.06.17/src/qmplay2/QMPlay2Core.cpp
+--- QMPlay2-src-23.06.17/src/qmplay2/QMPlay2Core.cpp.omv~	2023-07-22 01:34:12.232189816 +0200
++++ QMPlay2-src-23.06.17/src/qmplay2/QMPlay2Core.cpp	2023-07-22 01:34:52.314660203 +0200
+@@ -502,7 +502,7 @@ QStringList QMPlay2CoreClass::getModules
+         defaultModules << "MediaKit";
+ #endif
+     if (type == "decoders")
+-        defaultModules << "FFmpeg Decoder";
++        defaultModules << "FFmpeg VA-API Decoder" << "FFmpeg VDPAU Decoder" << "FFmpeg Decoder";
+     QStringList availableModules;
+     const QString moduleType = type.mid(0, typeLen);
+     for (Module *module : pluginsInstance)

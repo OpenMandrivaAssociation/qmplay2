@@ -17,6 +17,7 @@ Source100:	%{name}.rpmlintrc
 Patch0:		qmplay2-xcb-egl-integration.patch
 Patch1:         test.patch
 Patch2:         test2.patch
+Patch3:		qmplay2-default-vaapi-on.patch
 
 URL:		http://zaps166.sourceforge.net/?app=QMPlay2
 License:	LGPLv3
@@ -35,7 +36,6 @@ BuildRequires:	cmake(Qt6Widgets)
 BuildRequires:	cmake(Qt6Svg)
 BuildRequires:	cmake(Qt6DBus)
 BuildRequires:	cmake(Qt6Gui)
-#BuildRequires:	cmake(Qt6X11Extras)
 BuildRequires:	pkgconfig(alsa)
 BuildRequires:  pkgconfig(portaudio-2.0)
 BuildRequires:  pkgconfig(libpulse)
@@ -63,8 +63,9 @@ BuildRequires:  pkgconfig(taglib)
 BuildRequires:  sidplay-devel
 BuildRequires:  desktop-file-utils
 BuildRequires:  imagemagick
-BuildRequires:	plasma-workspace
+BuildRequires:	(plasma-workspace or plasma6-workspace)
 BuildRequires:  glslc
+BuildRequires:	vulkan-devel
 
 # since now needs youtube-dl.Sflo
 Requires:       yt-dlp
@@ -122,10 +123,17 @@ Development libs for %{oname}.
 %autosetup -p1 -n %{oname}-src-%{version}
 %cmake  \
         -G Ninja \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DUSE_PULSEAUDIO=ON \
-        -DUSE_LINK_TIME_OPTIMIZATION=ON \
-        -DBUILD_WITH_QT6=ON
+        -DUSE_PULSEAUDIO:BOOL=ON \
+        -DUSE_LINK_TIME_OPTIMIZATION:BOOL=ON \
+	-DUSE_FFMPEG_VAAPI:BOOL=ON \
+	-DFIND_HWACCEL_DRIVERS_PATH:BOOL=ON \
+	-DUSE_OPENGL:BOOL=ON \
+	-DUSE_VULKAN:BOOL=ON\
+	-DUSE_GLSLC:BOOL=ON \
+	-DUSE_FREEDESKTOP_NOTIFICATIONS:BOOL=ON\
+	-DUSE_DBUS_SUSPEND:BOOL=ON \
+	-DUSE_PCH:BOOL=ON \
+        -DBUILD_WITH_QT6:BOOL=ON
 
 %build
 %ninja_build -C build
