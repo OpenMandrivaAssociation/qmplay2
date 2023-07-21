@@ -18,12 +18,13 @@ Patch0:		qmplay2-xcb-egl-integration.patch
 
 URL:		http://zaps166.sourceforge.net/?app=QMPlay2
 License:	LGPLv3
-Group:		Video
+Group:		Video/Multimedia
 
 BuildRequires:  ninja
 BuildRequires:  cmake(Qt6)
 BuildRequires:	cmake(ECM)
 BuildRequires:  cmake(Qt6Concurrent)
+BuildRequires:  cmake(Qt6Core5Compat)
 BuildRequires:  cmake(Qt6Qml)
 BuildRequires:	cmake(Qt6Widgets)
 BuildRequires:	cmake(Qt6Svg)
