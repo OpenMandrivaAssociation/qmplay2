@@ -16,6 +16,7 @@ Source0:	https://github.com/zaps166/QMPlay2/releases/download/%{oname}-src-%{ver
 Source100:	%{name}.rpmlintrc
 Patch0:		qmplay2-xcb-egl-integration.patch
 Patch1:         test.patch
+Patch2:         test2.patch
 
 URL:		http://zaps166.sourceforge.net/?app=QMPlay2
 License:	LGPLv3
