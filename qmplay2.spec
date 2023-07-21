@@ -11,7 +11,7 @@
 Summary:	Video player
 Name:		qmplay2
 Version:	23.06.17
-Release:	1
+Release:	2
 Source0:	https://github.com/zaps166/QMPlay2/releases/download/%{oname}-src-%{version}.tar.xz
 Source100:	%{name}.rpmlintrc
 Patch0:		qmplay2-xcb-egl-integration.patch
@@ -21,14 +21,15 @@ License:	LGPLv3
 Group:		Video
 
 BuildRequires:  ninja
+BuildRequires:  cmake(Qt6)
 BuildRequires:	cmake(ECM)
-BuildRequires:  cmake(Qt5Concurrent)
-BuildRequires:  cmake(Qt5Qml)
-BuildRequires:	cmake(Qt5Widgets)
-BuildRequires:	cmake(Qt5Svg)
-BuildRequires:	cmake(Qt5DBus)
-BuildRequires:	cmake(Qt5Gui)
-BuildRequires:	cmake(Qt5X11Extras)
+BuildRequires:  cmake(Qt6Concurrent)
+BuildRequires:  cmake(Qt6Qml)
+BuildRequires:	cmake(Qt6Widgets)
+BuildRequires:	cmake(Qt6Svg)
+BuildRequires:	cmake(Qt6DBus)
+BuildRequires:	cmake(Qt6Gui)
+#BuildRequires:	cmake(Qt6X11Extras)
 BuildRequires:	pkgconfig(alsa)
 BuildRequires:  pkgconfig(portaudio-2.0)
 BuildRequires:  pkgconfig(libpulse)
@@ -58,8 +59,6 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  imagemagick
 BuildRequires:	plasma-workspace
 BuildRequires:  glslc
-Obsoletes:      qmplay2-12072013
-Obsoletes:      qmplay2-common-12072013
 
 # since now needs youtube-dl.Sflo
 Requires:       yt-dlp
@@ -119,7 +118,8 @@ Development libs for %{oname}.
         -G Ninja \
         -DCMAKE_BUILD_TYPE=Release \
         -DUSE_PULSEAUDIO=ON \
-        -DUSE_LINK_TIME_OPTIMIZATION=ON
+        -DUSE_LINK_TIME_OPTIMIZATION=ON \
+        -DBUILD_WITH_QT6=ON
 
 %build
 %ninja_build -C build
