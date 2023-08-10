@@ -15,8 +15,6 @@ Release:	1
 Source0:	https://github.com/zaps166/QMPlay2/releases/download/%{oname}-src-%{version}.tar.xz
 Source100:	%{name}.rpmlintrc
 Patch0:		qmplay2-xcb-egl-integration.patch
-Patch1:         test.patch
-Patch2:         test2.patch
 Patch3:		qmplay2-default-vaapi-on.patch
 
 URL:		http://zaps166.sourceforge.net/?app=QMPlay2
