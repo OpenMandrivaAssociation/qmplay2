@@ -10,8 +10,8 @@
 
 Summary:	Video player
 Name:		qmplay2
-Version:	23.06.17
-Release:	2
+Version:	23.08.08
+Release:	1
 Source0:	https://github.com/zaps166/QMPlay2/releases/download/%{oname}-src-%{version}.tar.xz
 Source100:	%{name}.rpmlintrc
 Patch0:		qmplay2-xcb-egl-integration.patch
