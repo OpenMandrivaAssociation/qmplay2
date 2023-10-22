@@ -10,7 +10,7 @@
 
 Summary:	Video player
 Name:		qmplay2
-Version:	23.09.05
+Version:	23.10.22
 Release:	1
 Source0:	https://github.com/zaps166/QMPlay2/releases/download/%{oname}-src-%{version}.tar.xz
 Source100:	%{name}.rpmlintrc
