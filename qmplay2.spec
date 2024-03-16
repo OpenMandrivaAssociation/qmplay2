@@ -119,6 +119,8 @@ Development libs for %{oname}.
 
 %prep
 %autosetup -p1 -n %{oname}-src-%{version}
+export CC=gcc
+export CXX=g++
 %cmake  \
         -G Ninja \
         -DUSE_PULSEAUDIO:BOOL=ON \
