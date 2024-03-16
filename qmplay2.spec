@@ -120,6 +120,7 @@ Development libs for %{oname}.
 
 %prep
 %autosetup -p1 -n %{oname}-src-%{version}
+# https://github.com/llvm/llvm-project/issues/85552
 export CC=gcc
 export CXX=g++
 %cmake  \
