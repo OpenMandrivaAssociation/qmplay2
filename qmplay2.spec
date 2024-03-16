@@ -134,6 +134,8 @@ Development libs for %{oname}.
         -DBUILD_WITH_QT6:BOOL=ON
 
 %build
+export CC=gcc
+export CXX=g++
 %ninja_build -C build
 
 %install
