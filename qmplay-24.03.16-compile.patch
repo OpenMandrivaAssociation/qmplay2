@@ -1,0 +1,12 @@
+diff -up QMPlay2-src-24.03.16/src/modules/FFmpeg/FFDecSW.cpp.omv~ QMPlay2-src-24.03.16/src/modules/FFmpeg/FFDecSW.cpp
+--- QMPlay2-src-24.03.16/src/modules/FFmpeg/FFDecSW.cpp.omv~	2024-03-16 19:04:49.906614998 +0100
++++ QMPlay2-src-24.03.16/src/modules/FFmpeg/FFDecSW.cpp	2024-03-16 19:04:58.382711231 +0100
+@@ -606,7 +606,7 @@ void FFDecSW::setPixelFormat()
+             }
+         }
+ 
+-        QMPlay2Core.logInfo("Converting to pixel format: " + desiredPixFmtName);
++        QMPlay2Core.logInfo(QString("Converting to pixel format: ") + desiredPixFmtName);
+         break;
+     }
+ }
