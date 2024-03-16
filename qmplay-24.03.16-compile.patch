@@ -1,6 +1,42 @@
+diff -up QMPlay2-src-24.03.16/src/gui/DemuxerThr.cpp.omv~ QMPlay2-src-24.03.16/src/gui/DemuxerThr.cpp
+--- QMPlay2-src-24.03.16/src/gui/DemuxerThr.cpp.omv~	2024-03-16 23:32:29.504482099 +0100
++++ QMPlay2-src-24.03.16/src/gui/DemuxerThr.cpp	2024-03-16 23:48:59.331372615 +0100
+@@ -53,7 +53,7 @@ static QString getWriterName(AVThread *a
+ 
+ static QString getCoverFile(const QString &title, const QString &artist, const QString &album)
+ {
+-    return QMPlay2Core.getSettingsDir() + "Covers/" + QCryptographicHash::hash((album.isEmpty() ? title.toUtf8() : album.toUtf8()) + artist.toUtf8(), QCryptographicHash::Md5).toHex();
++    return QMPlay2Core.getSettingsDir() + QString("Covers/") + QCryptographicHash::hash(static_cast<QByteArray>((album.isEmpty() ? title.toUtf8() : album.toUtf8()) + static_cast<QByteArray>(artist.toUtf8())), QCryptographicHash::Md5).toHex();
+ }
+ 
+ class BufferInfo
+diff -up QMPlay2-src-24.03.16/src/modules/Extensions/LastFM.cpp.omv~ QMPlay2-src-24.03.16/src/modules/Extensions/LastFM.cpp
+--- QMPlay2-src-24.03.16/src/modules/Extensions/LastFM.cpp.omv~	2024-03-16 23:30:10.670962362 +0100
++++ QMPlay2-src-24.03.16/src/modules/Extensions/LastFM.cpp	2024-03-16 23:49:30.863699216 +0100
+@@ -119,7 +119,7 @@ void LastFM::login()
+     static const QString getSessionURL = audioScrobbler2URL + QString("/?method=auth.getmobilesession&username=%1&authToken=%2&api_key=%3&api_sig=%4");
+     if (!loginReply && !user.isEmpty() && md5pass.length() == 32)
+     {
+-        const QString auth_token = QCryptographicHash::hash(user.toUtf8() + md5pass.toUtf8(), QCryptographicHash::Md5).toHex();
++        const QString auth_token = QCryptographicHash::hash(static_cast<QByteArray>(user.toUtf8() + md5pass.toUtf8()), QCryptographicHash::Md5).toHex();
+         const QString api_sig = QCryptographicHash::hash(QString("api_key%1authToken%2methodauth.getmobilesessionusername%3%4").arg(api_key, auth_token, user, secret).toUtf8(), QCryptographicHash::Md5).toHex();
+         loginReply = net.start(getSessionURL.arg(user, auth_token, api_key, api_sig));
+         connect(loginReply, SIGNAL(finished()), this, SLOT(loginFinished()));
+diff -up QMPlay2-src-24.03.16/src/modules/Extensions/Lyrics.cpp.omv~ QMPlay2-src-24.03.16/src/modules/Extensions/Lyrics.cpp
+--- QMPlay2-src-24.03.16/src/modules/Extensions/Lyrics.cpp.omv~	2024-03-16 23:54:09.018559268 +0100
++++ QMPlay2-src-24.03.16/src/modules/Extensions/Lyrics.cpp	2024-03-16 23:58:04.428958933 +0100
+@@ -222,7 +222,7 @@ void Lyrics::finished(NetworkReply *repl
+     else if (reply == m_tekstowoLyricsReply)
+     {
+         const auto getLyrics = [data](const QString &type)->QString {
+-            int idx1 = data.indexOf("class=\"" + type.toLatin1() + "\"");
++            int idx1 = data.indexOf(static_cast<QByteArray>(QByteArray("class=\"") + type.toLatin1() + "\""));
+             if (idx1 > -1)
+             {
+                 idx1 = data.indexOf("</h2>", idx1);
 diff -up QMPlay2-src-24.03.16/src/modules/FFmpeg/FFDecSW.cpp.omv~ QMPlay2-src-24.03.16/src/modules/FFmpeg/FFDecSW.cpp
---- QMPlay2-src-24.03.16/src/modules/FFmpeg/FFDecSW.cpp.omv~	2024-03-16 19:04:49.906614998 +0100
-+++ QMPlay2-src-24.03.16/src/modules/FFmpeg/FFDecSW.cpp	2024-03-16 19:04:58.382711231 +0100
+--- QMPlay2-src-24.03.16/src/modules/FFmpeg/FFDecSW.cpp.omv~	2024-03-17 00:01:44.799194581 +0100
++++ QMPlay2-src-24.03.16/src/modules/FFmpeg/FFDecSW.cpp	2024-03-17 00:01:52.507272641 +0100
 @@ -606,7 +606,7 @@ void FFDecSW::setPixelFormat()
              }
          }

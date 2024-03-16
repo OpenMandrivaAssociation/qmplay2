@@ -16,6 +16,8 @@ Source0:	https://github.com/zaps166/QMPlay2/releases/download/%{oname}-src-%{ver
 Source100:	%{name}.rpmlintrc
 Patch0:		qmplay2-xcb-egl-integration.patch
 Patch1:		qmplay-24.03.16-compile.patch
+# https://github.com/llvm/llvm-project/issues/85552
+Patch2:		qmplay2-workaround-clang-bug-85552.patch
 Patch3:		qmplay2-default-vaapi-on.patch
 
 URL:		http://zaps166.sourceforge.net/?app=QMPlay2
@@ -120,9 +122,6 @@ Development libs for %{oname}.
 
 %prep
 %autosetup -p1 -n %{oname}-src-%{version}
-# https://github.com/llvm/llvm-project/issues/85552
-export CC=gcc
-export CXX=g++
 %cmake  \
         -G Ninja \
         -DUSE_PULSEAUDIO:BOOL=ON \
@@ -135,11 +134,10 @@ export CXX=g++
 	-DUSE_FREEDESKTOP_NOTIFICATIONS:BOOL=ON\
 	-DUSE_DBUS_SUSPEND:BOOL=ON \
 	-DUSE_PCH:BOOL=ON \
+	-DUSE_FFMPEG_VKVIDEO:BOOL=ON \
         -DBUILD_WITH_QT6:BOOL=ON
 
 %build
-export CC=gcc
-export CXX=g++
 %ninja_build -C build
 
 %install

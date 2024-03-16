@@ -1,0 +1,12 @@
+diff -up QMPlay2-src-24.03.16/src/modules/Inputs/ToneGenerator.hpp.omv~ QMPlay2-src-24.03.16/src/modules/Inputs/ToneGenerator.hpp
+--- QMPlay2-src-24.03.16/src/modules/Inputs/ToneGenerator.hpp.omv~	2024-03-16 23:22:47.626755539 +0100
++++ QMPlay2-src-24.03.16/src/modules/Inputs/ToneGenerator.hpp	2024-03-16 23:22:53.034806612 +0100
+@@ -20,7 +20,7 @@
+ 
+ #include <Demuxer.hpp>
+ 
+-class ToneGenerator final : public Demuxer
++class ToneGenerator /*final*/ : public Demuxer
+ {
+     Q_DECLARE_TR_FUNCTIONS(ToneGenerator)
+ public:
