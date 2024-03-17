@@ -6,7 +6,7 @@ diff -up QMPlay2-src-23.06.17/src/qmplay2/QMPlay2Core.cpp.omv~ QMPlay2-src-23.06
  #endif
      if (type == "decoders")
 -        defaultModules << "FFmpeg Decoder";
-+        defaultModules << "FFmpeg VA-API Decoder" << "FFmpeg VDPAU Decoder" << "FFmpeg Decoder";
++        defaultModules << "FFmpeg Vulkan Decoder" << "FFmpeg VA-API Decoder" << "FFmpeg VDPAU Decoder" << "FFmpeg Decoder";
      QStringList availableModules;
      const QString moduleType = type.mid(0, typeLen);
      for (Module *module : pluginsInstance)
