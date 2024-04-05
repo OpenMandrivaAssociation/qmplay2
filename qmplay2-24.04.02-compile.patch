@@ -1,0 +1,14 @@
+diff -up QMPlay2-src-24.04.02/src/modules/FFmpeg/FFCommon.cpp.omv~ QMPlay2-src-24.04.02/src/modules/FFmpeg/FFCommon.cpp
+--- QMPlay2-src-24.04.02/src/modules/FFmpeg/FFCommon.cpp.omv~	2024-04-05 21:37:03.665287280 +0200
++++ QMPlay2-src-24.04.02/src/modules/FFmpeg/FFCommon.cpp	2024-04-05 21:38:26.382120557 +0200
+@@ -44,8 +44,8 @@ void FFCommon::setDriversPath(const QStr
+                 if (!entry.startsWith("bin: "))
+                     continue;
+ 
+-                const auto path = entry.mid(5);
+-                if (path.contains("/lib" + wordSizeStr))
++                const QString &path = entry.mid(5);
++                if (path.contains(QString("/lib") + wordSizeStr))
+                     dirsWithWordSize.append(path);
+                 else if (path.contains("/lib/") || path.endsWith("/lib"))
+                     dirs.append(path);
