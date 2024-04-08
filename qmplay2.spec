@@ -65,7 +65,7 @@ BuildRequires:  pkgconfig(taglib)
 BuildRequires:  sidplay-devel
 BuildRequires:  desktop-file-utils
 BuildRequires:  imagemagick
-BuildRequires:	(plasma-workspace or plasma6-workspace)
+BuildRequires:	plasma6-workspace
 BuildRequires:  glslc
 BuildRequires:	vulkan-devel
 
