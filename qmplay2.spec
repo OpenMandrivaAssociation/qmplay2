@@ -15,7 +15,7 @@ Release:	1
 Source0:	https://github.com/zaps166/QMPlay2/releases/download/%{oname}-src-%{version}.tar.xz
 Source100:	%{name}.rpmlintrc
 Patch0:		qmplay2-xcb-egl-integration.patch
-Patch1:		qmplay2-24.04.02-compile.patch
+#Patch1:		qmplay2-24.04.02-compile.patch
 #Patch1:		qmplay-24.03.16-compile.patch
 # https://github.com/llvm/llvm-project/issues/85552
 Patch2:		qmplay2-workaround-clang-bug-85552.patch
