@@ -21,7 +21,7 @@ Patch0:		qmplay2-xcb-egl-integration.patch
 Patch2:		qmplay2-workaround-clang-bug-85552.patch
 Patch3:		qmplay2-default-vaapi-on.patch
 
-URL:		http://zaps166.sourceforge.net/?app=QMPlay2
+URL:		https://zaps166.sourceforge.net/?app=QMPlay2
 License:	LGPLv3
 Group:		Video/Multimedia
 
