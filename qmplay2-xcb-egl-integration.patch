@@ -1,11 +1,11 @@
-diff -up QMPlay2-src-24.03.16/src/gui/Main.cpp.1~ QMPlay2-src-24.03.16/src/gui/Main.cpp
---- QMPlay2-src-24.03.16/src/gui/Main.cpp.1~	2024-03-16 19:06:46.499930748 +0100
-+++ QMPlay2-src-24.03.16/src/gui/Main.cpp	2024-03-16 19:07:18.980294489 +0100
-@@ -634,6 +634,7 @@ int main(int argc, char *argv[])
+diff -uraN QMPlay2-src-25.06.27/src/gui/Main.cpp omv-QMPlay2-src-25.06.27/src/gui/Main.cpp
+--- QMPlay2-src-25.06.27/src/gui/Main.cpp	2025-06-26 22:45:29.000000000 +0200
++++ omv-QMPlay2-src-25.06.27/src/gui/Main.cpp	2025-06-28 01:10:21.260866217 +0200
+@@ -662,6 +662,7 @@
      qputenv("QT_ANDROID_MINIMUM_MOUSE_DOUBLE_CLICK_DISTANCE", "1000"); // Otherwise double-tap doesn't work in Qt6
  #endif
      qputenv("QT_QPA_UPDATE_IDLE_TIME", "0");
 +    qputenv("QT_XCB_GL_INTEGRATION", "xcb_egl"); // Needs to be done before the QApplication constructor loads the plugins, needed for VA-API to work
+     qputenv("QT_WAYLAND_FRAME_CALLBACK_TIMEOUT", "0");
  
  #ifdef Q_OS_HAIKU
-     setenv("HOME", "/boot/home", 1);
