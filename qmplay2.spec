@@ -18,7 +18,7 @@ Patch0:		qmplay2-xcb-egl-integration.patch
 #Patch1:		qmplay2-24.04.02-compile.patch
 #Patch1:		qmplay-24.03.16-compile.patch
 # https://github.com/llvm/llvm-project/issues/85552
-Patch2:		qmplay2-workaround-clang-bug-85552.patch
+#Patch2:		qmplay2-workaround-clang-bug-85552.patch
 Patch3:		qmplay2-default-vaapi-on.patch
 
 URL:		https://zaps166.sourceforge.net/?app=QMPlay2
